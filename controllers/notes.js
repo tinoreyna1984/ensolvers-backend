@@ -24,6 +24,15 @@ const getArchivedNotes = async (req, res = response) => {
   });
 };
 
+const getCategories = async (req, res = response) => {
+  const categories = await Categoria.find();
+
+  res.status(200).json({
+    ok: true,
+    categories,
+  });
+};
+
 const getOneNote = async (req, res = response) => {
   const noteId = req.params.id;
 
@@ -177,6 +186,7 @@ const eliminarNote = async (req, res = response) => {
 module.exports = {
   getNotes,
   getArchivedNotes,
+  getCategories,
   getOneNote,
   crearNote,
   actualizarNote,
